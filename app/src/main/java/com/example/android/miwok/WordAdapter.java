@@ -89,12 +89,13 @@ public class WordAdapter extends ArrayAdapter<word> {
         // Set the background color of the text container View
         textContainer.setBackgroundColor(color);
 
-        textContainer.setOnClickListener(new View.OnClickListener() {
+        /*textContainer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 releaseMediaPlayer();
 
+                //空指针异常
                 int result = mAudioManager.requestAudioFocus(mOnAudioFocusChangeListener,
                         AudioManager.STREAM_MUSIC, AudioManager.AUDIOFOCUS_GAIN_TRANSIENT);
 
@@ -111,7 +112,7 @@ public class WordAdapter extends ArrayAdapter<word> {
 
                 }
             }
-        });
+        });*/
 
         //返回整个列表项布局（包含2个TextView）
         //这样可以在ListView中显示

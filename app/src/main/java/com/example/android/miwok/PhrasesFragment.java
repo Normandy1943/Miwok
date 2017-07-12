@@ -1,18 +1,32 @@
 package com.example.android.miwok;
 
+
 import android.media.MediaPlayer;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import android.support.v4.app.Fragment;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ListView;
 
-public class PhrasesActivity extends AppCompatActivity {
+import java.util.ArrayList;
+
+/**
+ * A simple {@link Fragment} subclass.
+ */
+public class PhrasesFragment extends Fragment {
 
     private MediaPlayer mMediaPlayer;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        /*setContentView(R.layout.word_list);
+    public PhrasesFragment() {
+        // Required empty public constructor
+    }
 
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        View rootView = inflater.inflate(R.layout.word_list, container, false);
         ArrayList<word> words = new ArrayList<word>();
         words.add(new word("Where are you going?", "minto wuksus",R.raw.phrase_where_are_you_going));
         words.add(new word("What is your name?", "tinnә oyaase'nә",R.raw.phrase_what_is_your_name));
@@ -25,17 +39,14 @@ public class PhrasesActivity extends AppCompatActivity {
         words.add(new word("Let’s go.", "yoowutis",R.raw.phrase_lets_go));
         words.add(new word("Come here.", "әnni'nem",R.raw.phrase_come_here));
 
-        WordAdapter adapter = new WordAdapter(this, words, R.color.category_phrases);
-        ListView listView = (ListView) findViewById(R.id.list);
-        listView.setAdapter(adapter);*/
-
-        setContentView(R.layout.activity_category);
-
-        getSupportFragmentManager().beginTransaction().replace(R.id.container, new PhrasesFragment()).commit();
+        WordAdapter adapter = new WordAdapter(getActivity(), words, R.color.category_phrases);
+        ListView listView = (ListView) rootView.findViewById(R.id.list);
+        listView.setAdapter(adapter);
+        return rootView;
     }
 
     @Override
-    protected void onStop() {
+    public void onStop() {
         super.onStop();
         releaseMediaPlayer();
     }
@@ -53,4 +64,5 @@ public class PhrasesActivity extends AppCompatActivity {
             mMediaPlayer = null;
         }
     }
+
 }

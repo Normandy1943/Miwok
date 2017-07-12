@@ -1,17 +1,32 @@
 package com.example.android.miwok;
 
+
 import android.media.MediaPlayer;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import android.support.v4.app.Fragment;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ListView;
 
-public class ColorsActivity extends AppCompatActivity {
+import java.util.ArrayList;
+
+/**
+ * A simple {@link Fragment} subclass.
+ */
+public class ColorsFragment extends Fragment {
 
     private MediaPlayer mMediaPlayer;
 
+    public ColorsFragment() {
+        // Required empty public constructor
+    }
+
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        /*setContentView(R.layout.word_list);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        View rootView = inflater.inflate(R.layout.word_list, container, false);
 
         ArrayList<word> words = new ArrayList<word>();
         words.add(new word("red", "weṭeṭṭi",R.drawable.color_red,R.raw.color_red));
@@ -23,17 +38,14 @@ public class ColorsActivity extends AppCompatActivity {
         words.add(new word("black", "kululli",R.drawable.color_black,R.raw.color_black));
         words.add(new word("white", "kelelli",R.drawable.color_white,R.raw.color_white));
 
-        WordAdapter adapter = new WordAdapter(this, words, R.color.category_colors);
-        ListView listView = (ListView) findViewById(R.id.list);
-        listView.setAdapter(adapter);*/
-
-        setContentView(R.layout.activity_category);
-
-        getSupportFragmentManager().beginTransaction().replace(R.id.container, new ColorsFragment()).commit();
+        WordAdapter adapter = new WordAdapter(getActivity(), words, R.color.category_colors);
+        ListView listView = (ListView) rootView.findViewById(R.id.list);
+        listView.setAdapter(adapter);
+        return rootView;
     }
 
     @Override
-    protected void onStop() {
+    public void onStop() {
         super.onStop();
         releaseMediaPlayer();
     }

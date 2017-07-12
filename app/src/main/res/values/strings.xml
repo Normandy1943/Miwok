@@ -31,7 +31,7 @@
     <string name="category_numbers">Numbers</string>
 
     <!-- Category name for the vocabulary words for family members [CHAR LIMIT=20] -->
-    <string name="category_family">Family Members</string>
+    <string name="category_family">Family</string>
 
     <!-- Category Numbers : English -->
     <string name="eng_1">one</string>
@@ -44,4 +44,7 @@
     <string name="eng_8">eight</string>
     <string name="eng_9">nine</string>
     <string name="eng_10">ten</string>
+
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
